@@ -1,6 +1,5 @@
 'use client'
 import styles from "./page.module.css";
-import Aside from "@/components/aside";
 import Svg from "@/components/Svg";
 import {useState} from "react";
 import Link from "next/link";
