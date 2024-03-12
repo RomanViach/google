@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import Aside from "@/components/aside";
+import AsideMonke from "@/components/AsideMonke";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -17,7 +17,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ru">
-    <Aside/>
+    <AsideMonke/>
       <body className={inter.className}>{children}</body>
     </html>
   );
