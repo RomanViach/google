@@ -3,20 +3,11 @@ import React, {useCallback, useEffect, useMemo, useState} from 'react';
 import styles from "./aside.module.css";
 
 const Aside = () => {
-    const [re, setRe] = useState<number>(0)
+    const [re, setRe] = useState<boolean>(true)
     const removeShowing = useCallback(() => {
-        localStorage.setItem('aside', 'false')
-        setRe(re=>re+1)
+        setRe(false)
     }, []);
-    useEffect(() => {
-        if(!localStorage.getItem('aside')){
-            localStorage.setItem('aside', 'true')
-        }
-    }, []);
-    const isShowing = useMemo(() => {
-        return localStorage.getItem('aside') !== 'false'
-    }, [re]);
-    if(!isShowing) {
+    if(!re) {
         return <></>
     }
     return (
