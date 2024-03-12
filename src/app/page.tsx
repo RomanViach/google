@@ -9,7 +9,6 @@ export default function Home() {
     const [value, setValue] = useState<string>('')
     return (
         <main className={styles.main}>
-            <Aside/>
             <div className={styles.TcuCfd}>
                 <Svg/>
                 <div className={styles.severer}>
@@ -29,7 +28,7 @@ export default function Home() {
                                     <Link className={styles.link} href='forgot'>Забыли адрес электронной почты?</Link>
                                 </div>
                             </div>
-                            <div>
+                            <div style={{color: '#444746', fontSize: '0.875rem'}}>
                                 Работаете на чужом компьютере? Используйте режим инкогнито.
                                 <p><a href='https://support.google.com/accounts?p=signin_privatebrowsing&hl=ru'
                                       target='_blank' className={styles.someCringe}>
@@ -40,13 +39,26 @@ export default function Home() {
                             <Link href='create' className={styles.create}>Создать аккаунт</Link>
                             <Link href='congrat' className={styles.next}>Далее</Link>
                         </div>
-
                     </div>
                 </div>
             </div>
 
-            <div className={styles.wmGw4}>
-            </div>
+            <footer className={styles.wmGw4}>
+                <a href='https://support.google.com/accounts?hl=ru&p=account_iph'>
+                    Русский
+                </a>
+                <div className={styles.secondHalf}>
+                    <a target='_blank' href='https://support.google.com/accounts?hl=ru&p=account_iph'>
+                        Справка
+                    </a>
+                    <a target='_blank' href='https://accounts.google.com/TOS?loc=UA&hl=ru&privacy=true'>
+                        Конфиденциальность
+                    </a>
+                    <a target='_blank' href='https://accounts.google.com/TOS?loc=UA&hl=ru'>
+                        Условия
+                    </a>
+                </div>
+            </footer>
         </main>
     );
 }

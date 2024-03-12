@@ -2,10 +2,11 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  min-height: 100vh;
-  background-color: #f0f4f9;
+  background-color: white;
+  padding-bottom: 20vh;
 }
 .TcuCfd{
+  min-height: 100vh;
   margin-top: 150px;
   background-color: white;
   border-radius: 0px;
@@ -40,6 +41,20 @@
   padding-left: 24px;
   padding-right: 24px;
   width: 100%;
+}
+
+.wmGw4{
+  color: #1f1f1f;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.wmGw4 a{
+  padding: 8px 10px;
+}
+
+.secondHalf{
+  display: flex;
 }
 .input{
   position: relative;
@@ -149,6 +164,9 @@
     margin-top: 0px;
     min-height: unset;
   }
+  .main{
+    min-height: unset;
+  }
   .severer{
     flex-direction: row;
   }
@@ -172,6 +190,10 @@
     margin-top: clamp(150px, 15vh, 500px);
     border-radius: 24px;
   }
+  .main{
+    background-color: #f0f4f9;
+    min-height: 100vh;
+  }
 }
 @media (min-width: 600px) and (orientation: landscape){
   .TcuCfd, .wmGw4 {
@@ -181,6 +203,13 @@
     padding-left: 24px;
     padding-right: 24px;
     width: 100%;
+    min-height: 100vh;
+  }
+  .main{
+    min-height: unset;
+  }
+  .wmGw4{
+    min-height: unset;
   }
   .severer{
     flex-direction: row;
@@ -191,6 +220,7 @@
   .rightHalf{
     width: 50%;
   }
+
 }
 
 @media (min-width: 840px){
@@ -199,6 +229,11 @@
     width: 480px;
     margin-top: clamp(150px, 20vh, 500px);
     border-radius: 24px;
+    min-height: unset;
+  }
+  .main{
+    background-color: #f0f4f9;
+    min-height: 100vh;
   }
 }
 @media (min-width: 840px) and (orientation: landscape){
@@ -208,6 +243,17 @@
     padding-left: 32px;
     padding-right: 32px;
     width: 100%;
+    min-height: 100vh;
+  }
+  .main{
+    background-color: white;
+    min-height: unset;
+  }
+  .wmGw4{
+    min-height: unset;
+  };
+  .wmGw4{
+    min-height: unset;
   }
   .severer{
     flex-direction: row;
@@ -218,6 +264,7 @@
   .rightHalf{
     width: 50%;
   }
+
 }
 
 
@@ -228,6 +275,11 @@
     width: 550px;
     border-radius: 24px;
     margin-top: clamp(150px, 25vh, 500px);
+    min-height: unset;
+  }
+  .main{
+    background-color: #f0f4f9;
+    min-height: 100vh;
   }
 }
 @media (min-width: 960px) and (orientation: landscape){
@@ -240,6 +292,10 @@
     width: clamp(800px, 80vw, 1200px);
     border-radius: 28px;
   }
+  .main{
+    background-color: #f0f4f9;
+    min-height: 100vh;
+  }
   .severer{
     flex-direction: row;
   }
@@ -249,4 +305,5 @@
   .rightHalf{
     width: 50%;
   }
+
 }
