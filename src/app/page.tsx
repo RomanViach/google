@@ -1,8 +1,8 @@
-'use client'
 import React from 'react';
-import {useRouter} from "next/navigation";
+import {redirect} from "next/navigation";
 
 const Page = () => {
+    redirect('/v3/signin')
     return (
         <div>
         </div>
