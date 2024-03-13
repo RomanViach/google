@@ -4,7 +4,7 @@
 .asideRightHalf{
     margin-top: 12px;
     display: flex;
-    justify-content: end;
+    justify-content: flex-end;
     align-items: center;
 }
 .aside{
@@ -50,6 +50,9 @@
     height: 48px;
 }
 .closeBtn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
     cursor: pointer;
     color: #0b57d0;
     width: 105.4px;

@@ -24,10 +24,10 @@ const Aside = () => {
                    target='_blank' href='https://support.google.com/accounts?p=new-si-ui' aria-label='Подробнее…'
                 >
                     Подробнее…</a>
-                <button className={styles.closeBtn}
+                <div className={styles.closeBtn}
                 onClick={removeShowing}>
                     Закрыть
-                </button>
+                </div>
             </div>
         </aside>
     );

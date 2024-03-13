@@ -6,14 +6,52 @@
   padding-bottom: 20vh;
 }
 .TcuCfd{
+  position: relative;
   min-height: 100vh;
   margin-top: 150px;
   background-color: white;
   border-radius: 0px;
 }
-.form{
 
+
+.line {
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  right: 3%;
+  left: 3%;
+  overflow: hidden;
+  height: 6px; /* Высота линии */
+  background-color: rgba(196, 199, 197, 0.5); /* Цвет фона линии */
 }
+
+.line::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 30%; /* Ширина заливки в процентах */
+  height: 100%;
+  background-color: #0b57d0; /* Цвет заливки */
+  animation: fillMove 2s linear infinite; /* Анимация заливки */
+}
+
+@keyframes fillMove {
+  0% {
+    left: 0%; /* Начальное положение заливки */
+  }
+  70% {
+    left: 100%; /* Конечное положение заливки */
+  }
+  70.001% {
+    left: 0%; /* Конечное положение заливки */
+  }
+  100% {
+    left: 100%; /* Конечное положение заливки */
+  }
+}
+
+
 .severer{
    display: flex;
   flex-direction: column;
@@ -32,9 +70,15 @@
   width: 100%;
 }
 .aboveSubmit{
+  min-height: 210px;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   gap: 5vh;
+}
+.errorIcon{
+  align-self: start;
+  margin-right: 5px;
 }
 .TcuCfd, .wmGw4 {
   margin: 0 auto;
@@ -48,6 +92,7 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
+  align-self: flex-end;
 }
 .wmGw4 a{
   padding: 8px 10px;
@@ -77,10 +122,13 @@
   height: 54px;
   padding: 13px 15px;
 }
-.rightHalf:has(input:focus)
+.rightHalf:has(.inputField:focus)
 {
-  .input input{
+  .input .valid{
     outline-color: #0b57d0;
+  }
+  .input .invalid{
+    outline-color: #b3261e;
   }
   .input::before{
     padding: 0 8px;
@@ -102,9 +150,116 @@
     top: -15%;
     left: 2%;
     transition: font-size .15s ease, top .15s ease;
+    color: black;
+  }
+}
+.rightHalf:has(.inputIsntVoid .invalid)
+{
+  .input::before{
+    color: #b3261e;
   }
 }
 
+.rightHalf:has(.invalid) {
+  .input::before {
+    color: black;
+  }
+  .input .inputField {
+    border: #b3261e 1px solid !important;
+  }
+}
+.rightHalf:has(.invalid:focus){
+  .input::before{
+    color: #b3261e;
+  }
+  .input .inputField{
+    border: #b3261e 1px solid !important;
+  }
+}
+.errorMessage{
+  display: flex;
+  align-items: center;
+  font-size: 12px;
+  color: #b3261e;
+  margin-top: 5px;
+}
+.container {
+  display: block;
+  position: relative;
+  padding-left: 28px;
+  margin-top: 12px;
+  cursor: pointer;
+  font-size: 0.875rem;
+  font-weight: 500;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Hide the browser's default checkbox */
+.container input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+/* Create a custom checkbox */
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 18px;
+  width: 18px;
+  background-color: white;
+  border: 2px solid #444746;
+  border-radius: 2px;
+}
+/* When the checkbox is checked, add a blue background */
+.container input:checked ~ .checkmark {
+  border: none;
+  background-color: #0b57d0;
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show the checkmark when checked */
+.container input:checked ~ .checkmark:after {
+  display: block;
+}
+
+/* Style the checkmark/indicator */
+.container .checkmark:after {
+  left: 6px;
+  top: 1px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 2.5px 2.5px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+.accountChooser{
+  cursor: pointer;
+  max-width: 280px;
+  padding: 3.5px;
+  display: flex;
+  gap: 5px;
+  align-items: center;
+  border: 1px solid #747775;
+  border-radius: 16px;
+}
+.accountChooser:hover{
+  background: rgba(31, 31, 31, 0.1);
+}
 .link{
   font-size: 0.875rem;
   font-weight: 500;
@@ -142,6 +297,7 @@
   background: rgba(11, 87, 208, 0.05);
 }
 .next{
+  cursor: pointer;
   font-size: 0.875rem;
   font-weight: 500;
   padding: 1rem;
@@ -155,7 +311,9 @@
 }
 .submit{
   display: flex;
-  justify-content: end;
+  gap: 10px;
+  justify-content: flex-end;
+  margin-bottom: 24px;
 }
 @media (min-width: 600px) and (orientation: landscape){
   .TcuCfd {

