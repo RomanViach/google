@@ -1,18 +1,13 @@
-// schema.prisma
-
 generator client {
   provider = "prisma-client-js"
 }
 
 datasource db {
-  provider = "postgresql"
-  url = env("POSTGRES_PRISMA_URL") // uses connection pooling
-  directUrl = env("POSTGRES_URL_NON_POOLING") // uses a direct connection
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
 }
-model Passwords {
-  id            String       @default(cuid()) @id
-  value         String?
-  createdAt     DateTime  @default(now()) @map(name: "created_at")
-  updatedAt     DateTime  @updatedAt @map(name: "updated_at")
-  @@map(name: "passwords")
+
+model passwords {
+  id         String   @id @default(auto()) @map("_id") @db.ObjectId
+  value      String
 }

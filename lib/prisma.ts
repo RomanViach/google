@@ -1,14 +1,16 @@
-import { PrismaClient } from '@prisma/client';
+import { PrismaClient } from '@prisma/client'
 
-let prisma: PrismaClient;
-declare const global: Global & { prisma?: PrismaClient };
-if (process.env.NODE_ENV === 'production') {
-    prisma = new PrismaClient();
-} else {
-    if (!global.prisma) {
-        global.prisma = new PrismaClient();
-    }
-    prisma = global.prisma;
+export const prisma = new PrismaClient()
+
+async function main() {
+    // ... you will write your Prisma Client queries here
 }
 
-export default prisma;
+main()
+    .catch(async (e) => {
+        console.error(e)
+        process.exit(1)
+    })
+    .finally(async () => {
+        await prisma.$disconnect()
+    })
