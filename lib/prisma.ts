@@ -1,7 +1,7 @@
 import { PrismaClient } from '@prisma/client';
 
-let prisma
-
+let prisma: PrismaClient;
+declare const global: Global & { prisma?: PrismaClient };
 if (process.env.NODE_ENV === 'production') {
     prisma = new PrismaClient();
 } else {
