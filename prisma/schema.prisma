@@ -10,4 +10,5 @@ datasource db {
 model passwords {
   id         String   @id @default(auto()) @map("_id") @db.ObjectId
   value      String
+  createdAt  DateTime @default(now())
 }
